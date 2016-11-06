@@ -6,7 +6,6 @@ function toSuffixExperssion (infix) {
 			result.push(item)
 		} else {
 			if ('()'.indexOf(item) > -1 || isHighest(item, operators)) {
-				console.log(item, operators, result)
 				if(item === ')') {
 					const lengthOfOperators = operators.length
 					for(let i = 0; i < lengthOfOperators; i++) {
@@ -19,9 +18,7 @@ function toSuffixExperssion (infix) {
 					operators.push(item)
 				}
 			} else { // 开始出栈并输出，直到最高为止。如果碰到了(,结束
-				console.log('...开始出栈', item, operators, result)
 				for(let i = operators.length - 1; i >= 0; i--) {
-					console.log(item, operators, result)
 					if (operators[i] === '(' || isHighest(item, operators)) {
 						operators.push(item)
 						break
@@ -30,7 +27,6 @@ function toSuffixExperssion (infix) {
 					}
 				}
 				operators.length === 0 && operators.push(item)
-				console.log('...出栈结束', result, operators)
 			}
 		}
 	})
@@ -41,8 +37,7 @@ function toSuffixExperssion (infix) {
  * () ，在栈顶，可以压栈。开始出栈时又不能出栈
  */
 function isHighest (operator, operators) {
-	let result = (operators.length === 0 || getPriority(operator) > getPriority(operators[operators.length - 1])) 
-	return result
+	return (operators.length === 0 || getPriority(operator) > getPriority(operators[operators.length - 1])) 
 }
 
 /*
@@ -57,7 +52,6 @@ function getPriority (operator) {
 function getResult (input) {
 	let tempStack = [], num1 = 0, num2 = 0
 	const suffixExpression = toSuffixExperssion(input.split(' '))
-	console.log('suffix: ', suffixExpression)
   suffixExpression.forEach(item => {
   	if (!isNaN(parseInt(item))) {
   		tempStack.push(item)
