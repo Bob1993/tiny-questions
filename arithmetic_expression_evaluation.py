@@ -2,7 +2,6 @@ def toSuffixExpression (infix):
 	result = []
 	operators = []
 	for item in infix:
-		print(item, 'current result: ', result, infix)
 		if item.isdigit():
 			result.append(item)
 		else:
@@ -25,12 +24,11 @@ def toSuffixExpression (infix):
 						break
 					else:
 						result.append(operators.pop())
-				return len(operators) == 0 and operators.append(item)
+				len(operators) == 0 and operators.append(item)
 	return result + list(reversed(operators)) if len(operators) > 0 else result
 
 def isHighest (operator, operators):
 	result = len(operators) == 0 or getPriority(operator) > getPriority(operators[len(operators) - 1])
-	print(operator, operators, '....highest:', result)
 	return result
 
 def getPriority (operator):
@@ -52,24 +50,18 @@ def getResult (input):
 			tempStack.append(caculate(num1, num2, item))
 	return tempStack.pop() if len(tempStack) == 1 else 0
 
-	def caculate (num1, num2, operator):
-		if operator == '+':
-			return num1 + num2
-		elif operator == '-':
-			return num1 - num2
-		elif operator == '*':
-			return num1 * num2
-		elif operator == '/':
-			return num1 / num2
-		return 0
+def caculate (num1, num2, operator):
+	if operator == '+':
+		return num1 + num2
+	elif operator == '-':
+		return num1 - num2
+	elif operator == '*':
+		return num1 * num2
+	elif operator == '/':
+		return num1 / num2
+	return 0
 
-print('the AEE for python is', toSuffixExpression('9 + ( 3 - 1 + 5 * 6 ) * 3 + 10 / 2'.split(' ')))
-
-
-
-
-
-
+print('answer for python is %d' % getResult('9 + ( 3 - 1 + 5 * 6 ) * 3 + 10 / 2'))
 
 
 
