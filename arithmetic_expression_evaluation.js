@@ -74,4 +74,4 @@ function caculate (num1, num2, operator) {
 	return 0
 }
 
-console.log(getResult('9 + ( 3 - 1 + 5 * 6 ) * 3 + 10 / 2'))
+console.log('answer for javascript is %d', getResult('9 + ( 3 - 1 + 5 * 6 ) * 3 + 10 / 2'))
